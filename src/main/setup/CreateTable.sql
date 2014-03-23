@@ -4,95 +4,95 @@
 -- RDBMS Type   : MySQL
 -- Application  : A5:SQL Mk-2
 
--- ƒJƒeƒSƒŠ-ƒTƒCƒg
+-- ã‚«ãƒ†ã‚´ãƒª-ã‚µã‚¤ãƒˆ
 drop table if exists CATEGORY_SITE cascade;
 
 create table CATEGORY_SITE (
-  CATEGORY_ID INT comment 'ƒJƒeƒSƒŠID'
-  , SITE_ID INT comment 'ƒTƒCƒgID'
+  CATEGORY_ID INT comment 'ã‚«ãƒ†ã‚´ãƒªID'
+  , SITE_ID INT comment 'ã‚µã‚¤ãƒˆID'
   , constraint CATEGORY_SITE_PKC primary key (CATEGORY_ID,SITE_ID)
-) comment 'ƒJƒeƒSƒŠ-ƒTƒCƒg' ;
+) comment 'ã‚«ãƒ†ã‚´ãƒª-ã‚µã‚¤ãƒˆ' ;
 
--- ƒJƒeƒSƒŠ
+-- ã‚«ãƒ†ã‚´ãƒª
 drop table if exists CATEGORY cascade;
 
 create table CATEGORY (
-  CATEGORY_ID INT AUTO_INCREMENT comment 'ƒJƒeƒSƒŠID'
-  , CATEGORY_NAME VARCHAR(256) comment 'ƒJƒeƒSƒŠ–¼'
+  CATEGORY_ID INT AUTO_INCREMENT comment 'ã‚«ãƒ†ã‚´ãƒªID'
+  , CATEGORY_NAME VARCHAR(256) comment 'ã‚«ãƒ†ã‚´ãƒªå'
   , constraint CATEGORY_PKC primary key (CATEGORY_ID)
-) comment 'ƒJƒeƒSƒŠ' ;
+) comment 'ã‚«ãƒ†ã‚´ãƒª' ;
 
--- ƒ^ƒO
+-- ã‚¿ã‚°
 drop table if exists TAG cascade;
 
 create table TAG (
-  ARTICLE_ID INT not null comment '‹L–ID'
+  ARTICLE_ID INT not null comment 'è¨˜äº‹ID'
   , SEQ INT comment 'SEQ'
-  , TAG VARCHAR(256) comment 'ƒ^ƒO'
+  , TAG VARCHAR(256) comment 'ã‚¿ã‚°'
   , constraint TAG_PKC primary key (ARTICLE_ID,SEQ)
-) comment 'ƒ^ƒO' ;
+) comment 'ã‚¿ã‚°' ;
 
--- ûW‹L–
+-- åé›†è¨˜äº‹
 drop table if exists COLLECT_ARTICLE cascade;
 
 create table COLLECT_ARTICLE (
-  ID INT AUTO_INCREMENT comment 'ûW‹L–ID'
-  , COLLECT_ID INT comment 'ûWID'
-  , ARTICLE_ID INT comment '‹L–ID'
+  ID INT AUTO_INCREMENT comment 'åé›†è¨˜äº‹ID'
+  , COLLECT_ID INT comment 'åé›†ID'
+  , ARTICLE_ID INT comment 'è¨˜äº‹ID'
   , constraint COLLECT_ARTICLE_PKC primary key (ID)
-) comment 'ûW‹L–' ;
+) comment 'åé›†è¨˜äº‹' ;
 
--- ûWî•ñ
+-- åé›†æƒ…å ±
 drop table if exists COLLECT_INFO cascade;
 
 create table COLLECT_INFO (
-  COLLECT_ID INT AUTO_INCREMENT comment 'ûWID'
-  , COLLECT_DATE TIMESTAMP default NOW() comment 'ûW“ú'
+  COLLECT_ID INT AUTO_INCREMENT comment 'åé›†ID'
+  , COLLECT_DATE TIMESTAMP default NOW() comment 'åé›†æ—¥æ™‚'
   , constraint COLLECT_INFO_PKC primary key (COLLECT_ID)
-) comment 'ûWî•ñ' ;
+) comment 'åé›†æƒ…å ±' ;
 
 create index COLLECT_INFO_IX1
   on COLLECT_INFO(COLLECT_DATE);
 
--- ƒAƒNƒZƒX—š—ğ
+-- ã‚¢ã‚¯ã‚»ã‚¹å±¥æ­´
 drop table if exists ACCESS_HISTORY cascade;
 
 create table ACCESS_HISTORY (
-  HISTORY_ID INT AUTO_INCREMENT comment '—š—ğID'
-  , FROM_IP VARCHAR(32) default 0 not null comment 'ƒAƒNƒZƒXŒ³IP'
-  , TO_ARTICLE_ID INT not null comment 'ƒŠƒ_ƒCƒŒƒNƒgæ‹L–ID'
-  , ACCESS_DATE_TIME TIMESTAMP default NOW() not null comment 'ƒAƒNƒZƒX“ú'
+  HISTORY_ID INT AUTO_INCREMENT comment 'å±¥æ­´ID'
+  , FROM_IP VARCHAR(32) default 0 not null comment 'ã‚¢ã‚¯ã‚»ã‚¹å…ƒIP'
+  , TO_ARTICLE_ID INT not null comment 'ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆå…ˆè¨˜äº‹ID'
+  , ACCESS_DATE_TIME TIMESTAMP default NOW() not null comment 'ã‚¢ã‚¯ã‚»ã‚¹æ—¥æ™‚'
   , constraint ACCESS_HISTORY_PKC primary key (HISTORY_ID)
-) comment 'ƒAƒNƒZƒX—š—ğ' ;
+) comment 'ã‚¢ã‚¯ã‚»ã‚¹å±¥æ­´' ;
 
--- ‹L–
+-- è¨˜äº‹
 drop table if exists ARTICLE cascade;
 
 create table ARTICLE (
-  ARTICLE_ID INT AUTO_INCREMENT comment '‹L–ID'
-  , SITE_ID INT comment 'ƒTƒCƒgID'
-  , ARTICLE_URL VARCHAR(512) not null comment '‹L–URL'
-  , ARTICLE_TITLE VARCHAR(512) default 'UNKNOWN' not null comment '‹L––¼'
-  , ARTICLE_CONTENTS BLOB comment '‹L–“à—e'
-  , CRETE_DATE_TIME TIMESTAMP comment '”zM“ú'
-  , UPDATE_DATE_TIME TIMESTAMP comment 'XV“ú'
+  ARTICLE_ID INT AUTO_INCREMENT comment 'è¨˜äº‹ID'
+  , SITE_ID INT comment 'ã‚µã‚¤ãƒˆID'
+  , ARTICLE_URL VARCHAR(512) CHARACTER SET latin1 not null comment 'è¨˜äº‹URL'
+  , ARTICLE_TITLE VARCHAR(512) default 'UNKNOWN' not null comment 'è¨˜äº‹å'
+  , ARTICLE_CONTENTS BLOB comment 'è¨˜äº‹å†…å®¹'
+  , CRETE_DATE_TIME TIMESTAMP comment 'é…ä¿¡æ—¥æ™‚'
+  , UPDATE_DATE_TIME TIMESTAMP comment 'æ›´æ–°æ—¥æ™‚'
   , constraint ARTICLE_PKC primary key (ARTICLE_ID)
-) comment '‹L–' CHARACTER SET 'utf8';
+) comment 'è¨˜äº‹' CHARACTER SET 'utf8';
 
 create index ARTICLE_IX1
   on ARTICLE(ARTICLE_URL);
 
--- ûW‘ÎÛ
+-- åé›†å¯¾è±¡
 drop table if exists COLLECT_TARGET cascade;
 
 create table COLLECT_TARGET (
-  SITE_ID INT AUTO_INCREMENT comment 'ƒTƒCƒgID'
-  , URL VARCHAR(512) comment 'URL'
-  , SITE_NAME VARCHAR(512) comment 'ƒTƒCƒg–¼'
-  , DELETE_FLG CHAR(1) default '0' not null comment 'íœƒtƒ‰ƒO'
-  , LAST_PUB_DATE_TIME TIMESTAMP comment 'ÅI”­s“ú'
+  SITE_ID INT AUTO_INCREMENT comment 'ã‚µã‚¤ãƒˆID'
+  , URL VARCHAR(512) CHARACTER SET latin1 comment 'URL'
+  , SITE_NAME VARCHAR(512) comment 'ã‚µã‚¤ãƒˆå'
+  , DELETE_FLG CHAR(1) default '0' not null comment 'å‰Šé™¤ãƒ•ãƒ©ã‚°'
+  , LAST_PUB_DATE_TIME TIMESTAMP comment 'æœ€çµ‚ç™ºè¡Œæ—¥æ™‚'
   , constraint COLLECT_TARGET_PKC primary key (SITE_ID)
-) comment 'ûW‘ÎÛ' CHARACTER SET 'utf8';
+) comment 'åé›†å¯¾è±¡' CHARACTER SET 'utf8';
 
 create index COLLECT_TARGET_IX1
   on COLLECT_TARGET(DELETE_FLG);
