@@ -1,0 +1,9 @@
+----------------------------------------------------------------
+2013-06-09 01:02:39.270 GMT:
+ Derby バージョン The Apache Software Foundation - Apache Derby - 10.6.2.1 - (999685): インスタンス a816c00e-013f-2674-d877-00000a01b400 を
+クラスローダー sun.misc.Launcher$AppClassLoader@1817fe89 によってデータベースディレクトリ C:\Users\toru\AppData\Local\Temp\gfembed417745494508115464tmp\lib\databases\ejbtimer  上でブート中 
+
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_21-b11
+データベースクラスローダーが開始されました - derby.database.classpath=''
